@@ -18,23 +18,8 @@ module.exports = merge(common, {
         },
       },
       {
-        test: /\.module\.s(a|c)ss$/,
-        use: ['style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[path][name]__[local]',
-              },
-            },
-          },
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.s(a|c)ss$/,
-        exclude: /\.module.(s(a|c)ss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   },
