@@ -7,6 +7,7 @@ import {
   Typography,
   Button,
 } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
 
 function Item() {
   return (
@@ -49,7 +50,9 @@ function Home() {
             </h1>
             <p className="text-lg font-semibold text-gray-400 tracking-wide">Get convinced yourself!</p>
             <div className="mt-10 flex justify-center sm:flex-row items-center">
-              <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-orange-300 text-white font-semibold uppercase hover:bg-orange-500">Check our shop now</button>
+              <Link to="shop">
+                <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-orange-300 text-white font-semibold uppercase hover:bg-orange-500">Check our shop now</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -69,7 +72,9 @@ function Home() {
           and how we do?
         </p>
         <div className="mb-10 flex justify-center sm:flex-row items-center">
-          <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-black text-white font-semibold uppercase hover:bg-gray-700">About us</button>
+          <Link to="about">
+            <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-black text-white font-semibold uppercase hover:bg-gray-700">About us</button>
+          </Link>
         </div>
       </div>
       <div className="carouselSection px-56">
