@@ -6,6 +6,7 @@ import {
   CardFooter,
   Typography,
   Button,
+  Input,
 } from '@material-tailwind/react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { fetchNewProducts } from '../fake-store';
@@ -109,7 +110,32 @@ function Home() {
         </div>
       </div>
       )}
-      <div className="px-28">Subscribe to newsletter/Social media</div>
+
+      <div className="px-56 h-[400px] flex flex-col items-center justify-center">
+        <Card className="w-5/12">
+          <CardHeader
+            variant="gradient"
+            color="blue"
+            className="mb-4 grid h-28 place-items-center"
+          >
+            <Typography variant="h3" color="white">
+              Subscribe to newsletter
+            </Typography>
+          </CardHeader>
+          <CardBody
+            className="flex flex-col gap-4"
+            variant="gradient"
+            color="black"
+          >
+            <Input label="Email" size="lg" variant="static" />
+          </CardBody>
+          <CardFooter className="pt-0">
+            <Button variant="gradient" fullWidth disabled>
+              Subscribe
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   );
 }
