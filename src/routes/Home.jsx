@@ -15,7 +15,7 @@ function Item({ data }) {
     id, title, price, description, image,
   } = data;
   return (
-    <Card className="relative flex-grow flex-shrink-0 basis-[calc(33.33%-4px)] snap-center border" id={id}>
+    <Card className="relative justify-around flex-grow flex-shrink-0 basis-[calc(33.33%-4px)] snap-center border" id={id}>
       <CardHeader className="relative mt-4 h-56">
         <img
           src={image}
@@ -24,14 +24,14 @@ function Item({ data }) {
         />
       </CardHeader>
       <CardBody className="text-center">
-        <Typography variant="h5" className="text-xl mb-2">
+        <Typography variant="h5" className="home-title-clamp h-[3.3rem] text-xl mb-2">
           {title}
         </Typography>
-        <Typography variant="paragraph">
+        <Typography variant="paragraph" className="home-line-clamp">
           {description}
         </Typography>
       </CardBody>
-      <CardFooter divider className="flex flex-col items-center justify-between py-3">
+      <CardFooter divider className="flex flex-col items-center justify-between p-0 mb-4">
         <Typography variant="small" color="indigo">
           Price: $
           {price}
@@ -99,16 +99,16 @@ function Home() {
           </Link>
         </div>
       </div>
+      {products && (
       <div className="carouselSection px-56">
         <h2 className="text-1xl text-center sm:text-3xl leading-4 ">Check our new items:</h2>
         <div id="carouselContainer" className="overflow-x-auto w-full snap-x px-px">
-          {products && (
-          <div id="carouselItems" className="container px-3 mx-auto snap-mandatory flex flex-nowrap gap-3 relative">
-              {products.map((product) => <Item data={product} key={product.id} />)}
+          <div id="carouselItems" className="container h-[550px] px-3 mx-auto snap-mandatory flex flex-nowrap gap-3 relative">
+            {products.map((product) => <Item data={product} key={product.id} />)}
           </div>
-          )}
         </div>
       </div>
+      )}
       <div className="px-28">Subscribe to newsletter/Social media</div>
     </div>
   );
