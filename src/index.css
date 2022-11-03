@@ -45,4 +45,18 @@ body {
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #0458b7;
   }
+
+  .home-line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .home-title-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
 }
