@@ -6,7 +6,9 @@ import { ThemeProvider } from '@material-tailwind/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import router from '../router';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { refetchOnWindowFocus: false } },
+});
 const queryRouter = router(queryClient);
 const root = ReactDOM.createRoot(document.getElementById('app'));
 
