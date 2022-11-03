@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient} contextSharing>
         <RouterProvider router={queryRouter} />
       </QueryClientProvider>
     </ThemeProvider>
