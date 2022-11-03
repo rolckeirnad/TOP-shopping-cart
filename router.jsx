@@ -11,24 +11,28 @@ import Shop from './src/routes/Shop';
 import ProductsList from './src/components/ProductsList';
 
 const router = createHashRouter(
-  createRoutesFromElements(
-    <Route
-      exact
-      path="/"
-      element={<App />}
-    >
+
+const router = (queryClient) => (
+  createHashRouter(
+    createRoutesFromElements(
+      <Route
+        exact
+        path="/"
+        element={<App />}
+      >
       <Route errorElement={<div>Error screen</div>}>
-        <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />}>
-          <Route path="" element={<ProductsList />} />
-          <Route path="electronics" element={<ProductsList />} />
-          <Route path="home" element={<ProductsList />} />
-          <Route path="pets" element={<ProductsList />} />
+          <Route index element={<Home />} />
+          <Route path="shop" element={<Shop />}>
+            <Route path="" element={<ProductsList />} />
+            <Route path="electronics" element={<ProductsList />} />
+            <Route path="home" element={<ProductsList />} />
+            <Route path="pets" element={<ProductsList />} />
+          </Route>
+          <Route path="about" element={<div>About</div>} />
         </Route>
-        <Route path="about" element={<div>About</div>} />
-      </Route>
-    </Route>,
-  ),
+      </Route>,
+    ),
+  )
 );
 
 export default router;
