@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  createBrowserRouter,
   Route,
   createRoutesFromElements,
+  createHashRouter,
 } from 'react-router-dom';
 
 import App from './src/App';
@@ -10,7 +10,7 @@ import Home from './src/routes/Home';
 import Shop from './src/routes/Shop';
 import ProductsList from './src/components/ProductsList';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route
       exact
