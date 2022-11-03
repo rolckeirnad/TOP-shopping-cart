@@ -6,11 +6,9 @@ import {
 } from 'react-router-dom';
 
 import App from './src/App';
-import Home from './src/routes/Home';
+import Home, { loader as newProductsLoader } from './src/routes/Home';
 import Shop from './src/routes/Shop';
 import ProductsList from './src/components/ProductsList';
-
-const router = createHashRouter(
 
 const router = (queryClient) => (
   createHashRouter(
@@ -21,7 +19,7 @@ const router = (queryClient) => (
         element={<App />}
       >
       <Route errorElement={<div>Error screen</div>}>
-          <Route index element={<Home />} />
+          <Route index element={<Home />} loader={newProductsLoader(queryClient)} />
           <Route path="shop" element={<Shop />}>
             <Route path="" element={<ProductsList />} />
             <Route path="electronics" element={<ProductsList />} />

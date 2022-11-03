@@ -7,35 +7,57 @@ import {
   Typography,
   Button,
 } from '@material-tailwind/react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { fetchNewProducts } from '../fake-store';
 
-function Item() {
+function Item({ data }) {
+  const {
+    id, title, price, description, image,
+  } = data;
   return (
-    <Card className="relative flex-grow flex-shrink-0 basis-[calc(33.33%-4px)] snap-center border">
+    <Card className="relative flex-grow flex-shrink-0 basis-[calc(33.33%-4px)] snap-center border" id={id}>
       <CardHeader className="relative mt-4 h-56">
         <img
-          src="https://placekitten.com/300/300"
+          src={image}
           className="block w-full"
           alt="product"
         />
       </CardHeader>
       <CardBody className="text-center">
         <Typography variant="h5" className="text-xl mb-2">
-          Our new arrival item
+          {title}
         </Typography>
         <Typography variant="paragraph">
-          Some cool description about this item.
+          {description}
         </Typography>
       </CardBody>
       <CardFooter divider className="flex flex-col items-center justify-between py-3">
-        <Typography variant="small" color="indigo">Price: $9,99</Typography>
+        <Typography variant="small" color="indigo">
+          Price: $
+          {price}
+        </Typography>
         <Button disabled>Add to Cart</Button>
       </CardFooter>
     </Card>
   );
 }
 
+const newProductsQuery = () => ({
+  queryKey: ['home'],
+  queryFn: async () => fetchNewProducts(),
+});
+
+export const loader = (queryClient) => async () => {
+  const query = newProductsQuery();
+  return (
+    queryClient.getQueryData(query.queryKey)
+    ?? (queryClient.fetchQuery(query))
+  );
+};
+
 function Home() {
+  const products = useLoaderData();
+
   return (
     <div className="scrollbar">
       <div className="h-[90vh] w-full flex flex-col lg:flex-row">
@@ -80,9 +102,11 @@ function Home() {
       <div className="carouselSection px-56">
         <h2 className="text-1xl text-center sm:text-3xl leading-4 ">Check our new items:</h2>
         <div id="carouselContainer" className="overflow-x-auto w-full snap-x px-px">
+          {products && (
           <div id="carouselItems" className="container px-3 mx-auto snap-mandatory flex flex-nowrap gap-3 relative">
-            {Array(10).fill('').map(() => <Item />)}
+              {products.map((product) => <Item data={product} key={product.id} />)}
           </div>
+          )}
         </div>
       </div>
       <div className="px-28">Subscribe to newsletter/Social media</div>
