@@ -22,7 +22,7 @@ const fetchProducts = async () => {
 
 const fetchCategories = async () => {
   try {
-    const response = await fetch('https://fakestoreapi.com/categories');
+    const response = await fetch('https://fakestoreapi.com/products/categories');
     const data = await response.json();
     return data;
   } catch (error) {
@@ -33,7 +33,7 @@ const fetchCategories = async () => {
 
 const fetchSpecificCategory = async (category) => {
   try {
-    const response = await fetch(`https://fakestoreapi.com/category/${category}`);
+    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
     const data = await response.json();
     return data;
   } catch (error) {
