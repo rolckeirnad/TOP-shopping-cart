@@ -9,7 +9,7 @@ function Error() {
         <h1 className="text-6xl">Oops!</h1>
         <h2 className="text-9xl bg-black text-white p-6 rounded-[50px]">{error.status}</h2>
         <p className="text-5xl">{error.statusText}</p>
-        {error.data?.message && <p>{error.data.message}</p>}
+        {error.data?.message && <p className="text-3xl">{error.data.message}</p>}
       </div>
     );
   }
