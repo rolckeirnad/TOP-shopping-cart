@@ -8,7 +8,8 @@ import {
   Button,
   Input,
 } from '@material-tailwind/react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { fetchNewProducts } from '../fake-store';
 import Item from '../components/Item';
 
@@ -19,14 +20,14 @@ const newProductsQuery = () => ({
 
 export const loader = (queryClient) => async () => {
   const query = newProductsQuery();
-  return (
-    queryClient.getQueryData(query.queryKey)
-    ?? (queryClient.fetchQuery(query))
-  );
+  await queryClient.prefetchQuery({ ...query, staleTime: Infinity, refetchOnMount: false });
 };
 
 function Home() {
-  const products = useLoaderData();
+  const { data: products } = useQuery({
+    ...newProductsQuery(),
+    staleTime: Infinity,
+  });
 
   return (
     <div className="scrollbar">
