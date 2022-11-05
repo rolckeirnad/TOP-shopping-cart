@@ -1,45 +1,37 @@
 const fetchNewProducts = async () => {
-  try {
-    const response = await fetch('https://fakestoreapi.com/products?limit=5');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
+  const response = await fetch('https://fakestoreapi.com/products?limit=5');
+  if (!response.ok) {
+    throw (response);
   }
+  const data = await response.json();
+  return data;
 };
 
 const fetchProducts = async () => {
-  try {
-    const response = await fetch('https://fakestoreapi.com/products');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
+  const response = await fetch('https://fakestoreapi.com/products');
+  if (!response.ok) {
+    throw (response);
   }
+  const data = await response.json();
+  return data;
 };
 
 const fetchCategories = async () => {
-  try {
-    const response = await fetch('https://fakestoreapi.com/products/categories');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
+  const response = await fetch('https://fakestoreapi.com/products/categories');
+  if (!response.ok) {
+    throw (response);
   }
+  const data = await response.json();
+  return data;
 };
 
 const fetchSpecificCategory = async (category) => {
-  try {
-    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
+  const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+  if (!response.ok) {
+    throw (response);
   }
+  const data = await response.json();
+  return data;
 };
 
 export {
