@@ -7,8 +7,8 @@ import {
 
 import ErrorEl from './src/routes/Error';
 import App from './src/App';
-import Home, { loader as newProductsLoader } from './src/routes/Home';
-import Shop from './src/routes/Shop';
+import Home, { loader as homeLoader } from './src/routes/Home';
+import Shop, { loader as categoriesLoader } from './src/routes/Shop';
 import ProductsList from './src/components/ProductsList';
 
 const router = (queryClient) => (
@@ -19,13 +19,13 @@ const router = (queryClient) => (
         element={<App />}
       >
         <Route errorElement={<ErrorEl />}>
-      <Route errorElement={<div>Error screen</div>}>
-          <Route index element={<Home />} loader={newProductsLoader(queryClient)} />
-          <Route path="shop" element={<Shop />}>
-            <Route path="" element={<ProductsList />} />
-            <Route path="electronics" element={<ProductsList />} />
-            <Route path="home" element={<ProductsList />} />
-            <Route path="pets" element={<ProductsList />} />
+          <Route
+            index
+            element={<Home />}
+            loader={homeLoader(queryClient)}
+          />
+          <Route path="shop" element={<Shop />} loader={categoriesLoader(queryClient)}>
+            <Route path=":categoryPath" element={<ProductsList />} />
           </Route>
           <Route path="about" element={<div>About</div>} />
         </Route>
