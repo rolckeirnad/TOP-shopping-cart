@@ -5,6 +5,7 @@ import {
   createHashRouter,
 } from 'react-router-dom';
 
+import ErrorEl from './src/routes/Error';
 import App from './src/App';
 import Home, { loader as newProductsLoader } from './src/routes/Home';
 import Shop from './src/routes/Shop';
@@ -14,10 +15,10 @@ const router = (queryClient) => (
   createHashRouter(
     createRoutesFromElements(
       <Route
-        exact
         path="/"
         element={<App />}
       >
+        <Route errorElement={<ErrorEl />}>
       <Route errorElement={<div>Error screen</div>}>
           <Route index element={<Home />} loader={newProductsLoader(queryClient)} />
           <Route path="shop" element={<Shop />}>
