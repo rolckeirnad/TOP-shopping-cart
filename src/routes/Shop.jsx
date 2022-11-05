@@ -10,11 +10,19 @@ const categoriesQuery = () => ({
 
 export const loader = (queryClient) => async () => {
   const query = categoriesQuery();
-  await queryClient.prefetchQuery({ ...query, staleTime: Infinity, refetchOnMount: false });
+  await queryClient.fetchQuery({
+    ...query, staleTime: Infinity, refetchOnMount: false, useErrorBoundary: true,
+  });
 };
 
 function Shop() {
-  const { data: categories } = useQuery({ ...categoriesQuery(), staleTime: Infinity });
+  const { data: categories } = useQuery(
+    {
+      ...categoriesQuery(),
+      staleTime: Infinity,
+      useErrorBoundary: true,
+    },
+  );
 
   return (
     <div className="grid grid-cols-5 h-full">
