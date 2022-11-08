@@ -31,7 +31,7 @@ function Home() {
 
   return (
     <div className="scrollbar">
-      <div className="h-[90vh] w-full flex flex-col lg:flex-row">
+      <div className="w-full flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-gray-600">
           <div className="p-5 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
             <h1 className="py-10 text-3xl sm:text-5xl font-light tracking-wide leading-tight">
