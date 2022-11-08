@@ -12,7 +12,7 @@ function Header() {
       <nav>
         <ul className="flex gap-8 text-3xl">
           <li className="mr-6"><Link to="/"><span className="text-white hover:text-orange-500">Home</span></Link></li>
-          <li className="mr-6"><Link to="shop"><span className="text-white hover:text-orange-500">Explore</span></Link></li>
+          <li className="mr-6"><Link to="shop/all"><span className="text-white hover:text-orange-500">Explore</span></Link></li>
           <li className="mr-6"><Link to="about"><span className="text-white hover:text-orange-500">About</span></Link></li>
         </ul>
       </nav>
