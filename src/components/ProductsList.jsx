@@ -26,7 +26,7 @@ function ProductsList() {
           .map((_, ind) => <ItemPlaceholder key={`placeholder-${ind}`} />)
         )}
         {isSuccess && (products.map((product) => (
-          <ItemShop product={product} />
+          <ItemShop product={product} key={`product-${product.id}`} />
         ))
         )}
       </div>

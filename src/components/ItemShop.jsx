@@ -24,7 +24,7 @@ function ItemShop({ product }) {
     .catch(() => setError(true));
 
   return (
-    <Card key={`product-${id}`} className="z-[-1] bg-blue-gray-50 overflow-hidden border border-solid border-gray-300">
+    <Card className="z-[-1] bg-blue-gray-50 overflow-hidden border border-solid border-gray-300">
       <CardHeader className="m-0 rounded-none shadow-none border-b border-b-black">
         {load
           ? <img src={image} alt={title} className="w-full object-contain h-64 p-4" />
