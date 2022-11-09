@@ -9,7 +9,7 @@ import ErrorEl from './src/routes/Error';
 import App from './src/App';
 import Home, { loader as homeLoader } from './src/routes/Home';
 import Shop, { loader as categoriesLoader } from './src/routes/Shop';
-import ProductsList, { listLoader } from './src/components/ProductsList';
+import ProductsList from './src/components/ProductsList';
 
 const router = (queryClient) => (
   createHashRouter(
