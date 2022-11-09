@@ -7,6 +7,15 @@ const fetchNewProducts = async () => {
   return data;
 };
 
+const fetchById = async (id) => {
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  if (!response.ok) {
+    throw (response);
+  }
+  const data = await response.json();
+  return data;
+};
+
 const fetchProducts = async () => {
   const response = await fetch('https://fakestoreapi.com/products');
   if (!response.ok) {
@@ -35,5 +44,5 @@ const fetchSpecificCategory = async (category) => {
 };
 
 export {
-  fetchNewProducts, fetchProducts, fetchCategories, fetchSpecificCategory,
+  fetchNewProducts, fetchById, fetchProducts, fetchCategories, fetchSpecificCategory,
 };
