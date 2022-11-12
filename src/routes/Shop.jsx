@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useOutletContext } from 'react-router-dom';
 import { fetchCategories, fetchProducts } from '../fake-store';
 
 const categoriesQuery = () => ({
@@ -30,6 +30,8 @@ function Shop() {
       useErrorBoundary: true,
     },
   );
+
+  const addToCart = useOutletContext();
   return (
     <div className="grid grid-cols-5 h-full overflow-hidden">
       <div className="col-span-1 pl-5 bg-deep-orange-100">
@@ -37,7 +39,7 @@ function Shop() {
         <Link to="/shop/all"><h2 className="text-lg border-gray-600 border-b-2 hover:bg-orange-600">New</h2></Link>
         {categories.map((category, i) => <Link to={`/shop/${encodeURI(category)}`} key={`${category}-${i}`}><h2 className="text-lg border-gray-600 border-b-2 hover:bg-orange-600">{category}</h2></Link>)}
       </div>
-      <Outlet />
+      <Outlet context={addToCart} />
     </div>
   );
 }

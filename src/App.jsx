@@ -5,10 +5,17 @@ import Footer from './components/Footer';
 
 function App() {
   const [cart, setCart] = useState([]);
+
+  const addToCart = (product, quantity) => {
+    setCart((prevCart) => {
+      const newCart = [...prevCart, { ...product, quantity }];
+      return newCart;
+    });
+  };
   return (
     <>
       <Header cart={cart} />
-      <Outlet />
+      <Outlet context={addToCart} />
       <Footer />
     </>
   );

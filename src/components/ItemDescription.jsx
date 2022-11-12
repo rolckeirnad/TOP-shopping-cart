@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useOutletContext, useParams } from 'react-router-dom';
 import { fetchById } from '../fake-store';
 
 const productQuery = (id) => ({
@@ -14,6 +14,7 @@ const productQuery = (id) => ({
 function ItemDescription() {
   const { state } = useLocation();
   const { productId } = useParams();
+  const helperFn = useOutletContext();
   const [quantity, setQuantity] = useState(1);
   const item = state?.product;
 
@@ -41,8 +42,8 @@ function ItemDescription() {
     staleTime: Infinity,
     enabled: !item,
   });
-
   if (item) {
+    const addToCart = () => helperFn(item, quantity);
     return (
       <div className="col-start-2 col-end-[-1] flex gap-10 p-8 overflow-auto">
         <div className="w-1/3">
@@ -80,7 +81,7 @@ function ItemDescription() {
                 <button className="w-8" type="button" onClick={incrementQuantity}>+</button>
               </div>
             </div>
-            <Button type="button" disabled className="w-1/3 self-center mt-2 bg-black text-lg" onClick={addToBasket}>Add to Basket</Button>
+            <Button type="button" onClick={addToCart} className="w-1/3 self-center mt-2 bg-black text-lg">Add to Basket</Button>
           </div>
           <div>
             <p>
