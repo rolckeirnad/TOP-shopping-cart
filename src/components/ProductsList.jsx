@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import {
+  Link,
   useParams,
 } from 'react-router-dom';
 import { fetchSpecificCategory } from '../fake-store';
@@ -26,7 +27,9 @@ function ProductsList() {
           .map((_, ind) => <ItemPlaceholder key={`placeholder-${ind}`} />)
         )}
         {isSuccess && (products.map((product) => (
-          <ItemShop product={product} key={`product-${product.id}`} />
+          <Link to={`../product/${product.id}`} state={{ product, from: categoryPath }} key={`product-${product.id}`}>
+            <ItemShop product={product} />
+          </Link>
         ))
         )}
       </div>
