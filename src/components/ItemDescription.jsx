@@ -35,7 +35,7 @@ function ItemDescription() {
   };
 
   const {
-    data: product = item, isLoading, isSuccess, isError,
+    data: product = item,
   } = useQuery({
     ...productQuery(productId),
     staleTime: Infinity,
