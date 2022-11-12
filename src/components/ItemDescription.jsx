@@ -1,6 +1,6 @@
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from '@material-tailwind/react';
+import { Alert, Button } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useLocation, useOutletContext, useParams } from 'react-router-dom';
@@ -16,6 +16,7 @@ function ItemDescription() {
   const { productId } = useParams();
   const helperFn = useOutletContext();
   const [quantity, setQuantity] = useState(1);
+  const [alert, setAlert] = useState(false);
   const item = state?.product;
 
   const incrementQuantity = () => setQuantity(quantity + 1);
@@ -35,6 +36,13 @@ function ItemDescription() {
     setQuantity(value);
   };
 
+  const displayAlert = () => {
+    setAlert(true);
+    setTimeout(() => {
+      setAlert(false);
+    }, 3000);
+  };
+
   const {
     data: product = item,
   } = useQuery({
@@ -44,6 +52,10 @@ function ItemDescription() {
   });
   if (item) {
     const addToCart = () => helperFn(item, quantity);
+    const handleClick = () => {
+      addToCart();
+      displayAlert();
+    };
     return (
       <div className="col-start-2 col-end-[-1] flex gap-10 p-8 overflow-auto">
         <div className="w-1/3">
@@ -81,7 +93,7 @@ function ItemDescription() {
                 <button className="w-8" type="button" onClick={incrementQuantity}>+</button>
               </div>
             </div>
-            <Button type="button" onClick={addToCart} className="w-1/3 self-center mt-2 bg-black text-lg">Add to Basket</Button>
+            <Button type="button" onClick={handleClick} className="w-1/3 self-center mt-2 bg-black text-lg">Add to Basket</Button>
           </div>
           <div>
             <p>
@@ -92,6 +104,21 @@ function ItemDescription() {
             </p>
             <p>Estimated delivery: 14 days</p>
           </div>
+        </div>
+        <div className="overflow-hidden absolute bottom-0 right-0 w-fit p-8">
+          <Alert
+            show={alert}
+            color="green"
+            animate={{
+              mount: { y: 0 },
+              unmount: { y: 100 },
+            }}
+            dismissible={{
+              onClose: () => setAlert(false),
+            }}
+          >
+            Item added to cart!
+          </Alert>
         </div>
       </div>
     );
