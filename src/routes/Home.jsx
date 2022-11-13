@@ -79,14 +79,13 @@ function Home() {
       </div>
       )}
 
-      <div className="px-56 h-[400px] flex flex-col items-center justify-center">
-        <Card className="w-5/12">
+      <div className="h-[400px] flex flex-col items-center justify-center text-center md:px-56">
+        <Card className="w-full">
           <CardHeader
             variant="gradient"
-            color="blue"
-            className="mb-4 grid h-28 place-items-center"
+            className="mt-0 mb-4 grid h-28 place-items-center bg-black"
           >
-            <Typography variant="h3" color="white">
+            <Typography variant="h3" color="white" className="my-0">
               Subscribe to newsletter
             </Typography>
           </CardHeader>
@@ -98,7 +97,7 @@ function Home() {
             <Input label="Email" size="lg" variant="static" />
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth disabled>
+            <Button fullWidth disabled className="bg-black">
               Subscribe
             </Button>
           </CardFooter>
