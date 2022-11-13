@@ -7,7 +7,7 @@ import {
 
 import ErrorEl from './src/routes/Error';
 import App from './src/App';
-import Home, { loader as homeLoader } from './src/routes/Home';
+import Home from './src/routes/Home';
 import Shop, { loader as categoriesLoader } from './src/routes/Shop';
 import ProductsList from './src/components/ProductsList';
 import ItemDescription from './src/components/ItemDescription';
@@ -23,7 +23,6 @@ const router = (queryClient) => (
           <Route
             index
             element={<Home />}
-            loader={homeLoader(queryClient)}
           />
           <Route path="shop" element={<Shop />} loader={categoriesLoader(queryClient)}>
             <Route path=":categoryPath" element={<ProductsList />} />

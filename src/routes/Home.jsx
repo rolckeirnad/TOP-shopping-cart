@@ -18,11 +18,6 @@ const newProductsQuery = () => ({
   queryFn: async () => fetchNewProducts(),
 });
 
-export const loader = (queryClient) => async () => {
-  const query = newProductsQuery();
-  await queryClient.prefetchQuery({ ...query, staleTime: Infinity, refetchOnMount: false });
-};
-
 function Home() {
   const { data: products } = useQuery({
     ...newProductsQuery(),
