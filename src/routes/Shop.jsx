@@ -43,16 +43,19 @@ function Shop() {
     },
   );
 
+  const linkBaseStyle = 'flex items-center pl-2 ease-in-out duration-300';
+  const linkActiveStyle = 'bg-orange-600';
+
   const addToCart = useOutletContext();
   return (
     <div className="grid grid-cols-5 h-full overflow-hidden">
       <div className="col-span-1 py-10 capitalize text-white bg-gray-800 text-2xl flex flex-col gap-6">
-        <NavLink to="/shop/all" className={({ isActive }) => (isActive ? 'flex items-center pl-2 bg-orange-600 ease-in-out duration-300' : 'flex items-center pl-2 ease-in-out duration-300')}>
+        <NavLink to="/shop/all" className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)}>
           <FontAwesomeIcon icon={icon({ name: 'star', style: 'solid' })} />
-          <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">New</h2>
+          <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">All</h2>
         </NavLink>
         {categories && categories.map((category, i) => (
-          <NavLink to={`/shop/${encodeURI(category)}`} className={({ isActive }) => (isActive ? 'flex items-center pl-2 bg-orange-600 ease-in-out duration-300' : 'flex items-center pl-2 ease-in-out duration-300')} key={`${category}-sidebar-entry`}>
+          <NavLink to={`/shop/${encodeURI(category)}`} className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)} key={`${category}-sidebar-entry`}>
             <FontAwesomeIcon icon={customIcons[i] || faCircleExclamation} />
             <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">{category}</h2>
           </NavLink>
