@@ -56,9 +56,9 @@ function Home() {
           <img src="https://placekitten.com/g/800/600" alt="hero" className="w-full opacity-50 md:w-2/3 lg:w-full" />
         </div>
       </div>
-      <div className="mt-8 px-60">
-        <h2 className="text-1xl text-center sm:text-3xl leading-4 ">We make the best for you.</h2>
-        <p className="text-lg text-center">
+      <div className="mt-8 px-2 md:px-60">
+        <h2 className="text-xl text-center sm:text-3xl leading-4 ">We make the best for you.</h2>
+        <p className="text-base text-center py-4 md:text-lg">
           Nap all day cat dog hate mouse eat string barf pillow no baths hate everything but
           kitty poochy. Sleep on keyboard toy mouse squeak roll over. Mesmerizing birds. Poop
           on grasses licks paws destroy couch intently sniff hand. The dog smells bad gnaw the
