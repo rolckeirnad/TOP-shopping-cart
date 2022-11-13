@@ -1,6 +1,6 @@
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Alert, Button } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useLocation, useOutletContext, useParams } from 'react-router-dom';
@@ -16,7 +16,6 @@ function ItemDescription() {
   const { productId } = useParams();
   const helperFn = useOutletContext();
   const [quantity, setQuantity] = useState(1);
-  const [alert, setAlert] = useState(false);
   const item = state?.product;
 
   const incrementQuantity = () => setQuantity(quantity + 1);
@@ -36,13 +35,6 @@ function ItemDescription() {
     setQuantity(value);
   };
 
-  const displayAlert = () => {
-    setAlert(true);
-    setTimeout(() => {
-      setAlert(false);
-    }, 3000);
-  };
-
   const {
     data: product = item,
   } = useQuery({
@@ -54,7 +46,6 @@ function ItemDescription() {
     const addToCart = () => helperFn(item, quantity);
     const handleClick = () => {
       addToCart();
-      displayAlert();
     };
     return (
       <div className="col-start-2 col-end-[-1] flex gap-10 p-8 overflow-auto">
@@ -104,21 +95,6 @@ function ItemDescription() {
             </p>
             <p>Estimated delivery: 14 days</p>
           </div>
-        </div>
-        <div className="overflow-hidden absolute bottom-0 right-0 w-fit p-8">
-          <Alert
-            show={alert}
-            color="green"
-            animate={{
-              mount: { y: 0 },
-              unmount: { y: 100 },
-            }}
-            dismissible={{
-              onClose: () => setAlert(false),
-            }}
-          >
-            Item added to cart!
-          </Alert>
         </div>
       </div>
     );
