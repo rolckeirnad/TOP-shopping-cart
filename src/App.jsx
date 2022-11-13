@@ -35,9 +35,18 @@ function App() {
     });
     displayAlert('Item added to cart!');
   };
+
+  const removeFromCart = (id) => {
+    const newCart = [...cart];
+    const index = cart.findIndex((item) => item.id === id);
+    newCart.splice(index, 1);
+    setCart(newCart);
+    displayAlert('Item removed from cart!');
+  };
+
   return (
     <>
-      <Header cart={cart} />
+      <Header cart={cart} deleteItem={removeFromCart} />
       <Outlet context={addToCart} />
       <div className="overflow-hidden absolute bottom-0 right-0 w-fit p-8">
         <Alert

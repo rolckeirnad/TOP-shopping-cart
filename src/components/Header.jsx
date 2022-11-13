@@ -8,7 +8,7 @@ import {
 } from '@material-tailwind/react';
 import CartItem from './CartItem';
 
-function Header({ cart }) {
+function Header({ cart, deleteItem }) {
   const cartObj = cart.reduce((obj, item) => {
     const { totalItems, totalAmount } = obj;
     const newObj = {
@@ -52,7 +52,7 @@ function Header({ cart }) {
                 <hr className="mb-2" />
                 <div className="flex flex-col gap-8 overflow-auto">
                   {cart.length > 0
-                    ? cart.map((item) => <CartItem item={item} key={`cartItem-${item.id}`} />)
+                    ? cart.map((item) => <CartItem item={item} deleteItem={deleteItem} key={`cartItem-${item.id}`} />)
                     : <div>Your cart is empty</div>}
                 </div>
                 <hr className="my-4" />

@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconButton } from '@material-tailwind/react';
 import React from 'react';
 
-function CartItem({ item }) {
+function CartItem({ item, deleteItem }) {
   const {
     id, title, price, quantity, image,
   } = item;
 
-  const deleteItem = () => console.log(id);
+  const deleteFromCart = () => deleteItem(id);
 
   return (
     <div className="flex card">
@@ -29,7 +29,7 @@ function CartItem({ item }) {
             {' '}
             {quantity}
           </p>
-          <IconButton color="red" className="w-6 h-6 self-end" onClick={deleteItem}>
+          <IconButton color="red" className="w-6 h-6 self-end" onClick={deleteFromCart}>
             <FontAwesomeIcon icon={icon({ name: 'trash', style: 'solid' })} className="w-full h-full" />
           </IconButton>
         </div>
