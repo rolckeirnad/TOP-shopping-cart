@@ -51,7 +51,9 @@ function Header({ cart }) {
                 <h2 className="text-lg -mt-2">Your Cart</h2>
                 <hr className="mb-2" />
                 <div className="flex flex-col gap-8 overflow-auto">
-                  {cart.length && cart.map((item) => <CartItem item={item} key={`cartItem-${item.id}`} />)}
+                  {cart.length > 0
+                    ? cart.map((item) => <CartItem item={item} key={`cartItem-${item.id}`} />)
+                    : <div>Your cart is empty</div>}
                 </div>
                 <hr className="my-4" />
                 <div className="flex justify-end text-lg font-bold">
