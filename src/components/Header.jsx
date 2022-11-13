@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
+  IconButton,
   Popover, PopoverContent, PopoverHandler,
 } from '@material-tailwind/react';
 import CartItem from './CartItem';
@@ -19,15 +20,36 @@ function Header({ cart, deleteItem }) {
   }, { totalAmount: 0, totalItems: 0 });
 
   return (
-    <div className="p-0 h-20 flex px-32 gap-8 justify-between items-center bg-black text-white ">
-      <div className="relative overflow-hidden rounded-2xl">
-        <img className="relative w-16" src="https://placekitten.com/g/128/128" alt="kitten" />
+    <div className="p-0 h-16 flex justify-around items-center bg-black text-white md:justify-between md:h-20 md:gap-8 md:px-32">
+      <div className="hidden relative overflow-hidden rounded-2xl">
+        <img className="md:block relative w-16" src="https://placekitten.com/g/128/128" alt="kitten" />
       </div>
       <nav>
-        <ul className="flex gap-8 text-3xl">
-          <li className="mr-6"><Link to="/"><span className="text-white hover:text-orange-500">Home</span></Link></li>
-          <li className="mr-6"><Link to="shop/all"><span className="text-white hover:text-orange-500">Explore</span></Link></li>
-          <li className="mr-6"><Link to="about"><span className="text-white hover:text-orange-500">About</span></Link></li>
+        <ul className="flex items-center gap-8 text-3xl">
+          <li className="h-full">
+            <Link to="/" className="flex">
+              <IconButton className="bg-black md:hidden">
+                <FontAwesomeIcon icon={icon({ name: 'home', style: 'solid' })} className="w-full h-full" />
+              </IconButton>
+              <span className="hidden md:block text-white hover:text-orange-500">Home</span>
+            </Link>
+          </li>
+          <li className="h-full">
+            <Link to="shop/all" className="flex">
+              <IconButton className="bg-black md:hidden">
+                <FontAwesomeIcon icon={icon({ name: 'store', style: 'solid' })} className="w-full h-full" />
+              </IconButton>
+              <span className="hidden md:block text-white hover:text-orange-500">Explore</span>
+            </Link>
+          </li>
+          <li className="h-full">
+            <Link to="about" className="flex">
+              <IconButton className="bg-black md:hidden">
+                <FontAwesomeIcon icon={icon({ name: 'book', style: 'solid' })} className="w-full h-full" />
+              </IconButton>
+              <span className="hidden md:block text-white hover:text-orange-500">About</span>
+            </Link>
+          </li>
         </ul>
       </nav>
       <nav>
