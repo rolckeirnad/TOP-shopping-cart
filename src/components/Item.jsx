@@ -9,15 +9,15 @@ function Item({ data }) {
     id, title, price, description, image,
   } = data;
   return (
-    <Card className="relative justify-around flex-grow flex-shrink-0 basis-[calc(33.33%-4px)] snap-center border" id={id}>
-      <CardHeader className="relative mt-4 h-56">
+    <Card className="relative basis-[calc(50%)] justify-around flex-grow flex-shrink-0 md:basis-[calc(33.33%-4px)] snap-center border" id={id}>
+      <CardHeader className="relative self-center mt-4 h-1/3 md:h-56">
         <img
           src={image}
-          className="block w-full"
+          className="block h-full"
           alt="product"
         />
       </CardHeader>
-      <CardBody className="text-center">
+      <CardBody className="text-center p-2">
         <Typography variant="h5" className="home-title-clamp h-[3.3rem] text-xl mb-2">
           {title}
         </Typography>
@@ -26,11 +26,11 @@ function Item({ data }) {
         </Typography>
       </CardBody>
       <CardFooter divider className="flex flex-col items-center justify-between p-0 mb-4">
-        <Typography variant="small" color="indigo">
+        <Typography className="text-base" color="indigo">
           Price: $
           {price}
         </Typography>
-        <Button disabled>Add to Cart</Button>
+        <Button disabled className="bg-black">Add to Cart</Button>
       </CardFooter>
     </Card>
   );

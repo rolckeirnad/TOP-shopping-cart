@@ -69,10 +69,10 @@ function Home() {
         </div>
       </div>
       {products && (
-      <div className="carouselSection px-56">
-        <h2 className="text-1xl text-center sm:text-3xl leading-4 ">Check our new items:</h2>
+      <div className="carouselSection md:px-56">
+        <h2 className="text-xl text-center sm:text-3xl leading-4 ">Check our new items:</h2>
         <div id="carouselContainer" className="overflow-x-auto w-full snap-x px-px">
-          <div id="carouselItems" className="container h-[550px] px-3 mx-auto snap-mandatory flex flex-nowrap gap-3 relative">
+          <div id="carouselItems" className="container h-[65vh] px-3 mx-auto snap-mandatory flex flex-nowrap gap-2 md:gap-3 relative">
             {products.map((product) => <Item data={product} key={product.id} />)}
           </div>
         </div>
