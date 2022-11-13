@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Alert } from '@material-tailwind/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [alert, setAlert] = useState(false);
+  const [alertText, setAlertText] = useState('');
+  const timerHandler = useRef();
+
+  const displayAlert = (text) => {
+    clearTimeout(timerHandler.current);
+    setAlertText(text);
+    setAlert(true);
+    timerHandler.current = setTimeout(() => {
+      setAlert(false);
+    }, 3000);
+  };
 
   const addToCart = (product, quantity) => {
     setCart((prevCart) => {
@@ -20,11 +33,27 @@ function App() {
       const newCart = [...prevCart, { ...product, quantity }];
       return newCart;
     });
+    displayAlert('Item added to cart!');
   };
   return (
     <>
       <Header cart={cart} />
       <Outlet context={addToCart} />
+      <div className="overflow-hidden absolute bottom-0 right-0 w-fit p-8">
+        <Alert
+          show={alert}
+          color="green"
+          animate={{
+            mount: { y: 0 },
+            unmount: { y: 100 },
+          }}
+          dismissible={{
+            onClose: () => setAlert(false),
+          }}
+        >
+          {alertText}
+        </Alert>
+      </div>
       <Footer />
     </>
   );
