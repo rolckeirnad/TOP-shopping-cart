@@ -31,26 +31,29 @@ function Home() {
 
   return (
     <div className="scrollbar">
-      <div className="w-full flex flex-col lg:flex-row">
+      <div className="w-full relative flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-gray-600">
           <div className="p-5 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
-            <h1 className="py-10 text-3xl sm:text-5xl font-light tracking-wide leading-tight">
+            <h1
+              className="text-black pb-4 text-3xl sm:text-5xl font-light tracking-wide leading-tight md:py-10"
+              style={{ textShadow: '0 0 4px #7c7c7c' }}
+            >
               Premium items
               <br />
               Best prices.
               <br />
               Warranty satisfaction.
             </h1>
-            <p className="text-lg font-semibold text-gray-400 tracking-wide">Get convinced yourself!</p>
-            <div className="mt-10 flex justify-center sm:flex-row items-center">
+            <p className="text-lg text-blue-gray-800 font-semibold md:text-gray-400 tracking-wide" style={{ textShadow: '0 0 4px #7c7c7c' }}>Get convinced yourself!</p>
+            <div className="mt-4 flex justify-center sm:flex-row items-center md:mt-10">
               <Link to="shop/all">
                 <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-orange-300 text-white font-semibold uppercase hover:bg-orange-500">Check our shop now</button>
               </Link>
             </div>
           </div>
         </div>
-        <div className="relative w-full lg:w-1/2 flex flex-col justify-start items-center overflow-hidden">
-          <img src="https://placekitten.com/g/800/600" alt="hero" className="w-2/3 lg:w-full" />
+        <div className="absolute -z-10 w-full lg:w-1/2 flex flex-col justify-start items-center overflow-hidden">
+          <img src="https://placekitten.com/g/800/600" alt="hero" className="w-full opacity-50 md:w-2/3 lg:w-full" />
         </div>
       </div>
       <div className="mt-8 px-60">
