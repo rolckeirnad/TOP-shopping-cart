@@ -21,8 +21,8 @@ function ProductsList() {
     ...query, staleTime: Infinity, useErrorBoundary: true, refetchOnMount: false,
   });
   return (
-    <div className="col-start-2 col-end-[-1] overflow-y-auto">
-      <div className="grid grid-cols-4 grid-flow-row gap-8 px-6 py-10">
+    <div className="col-start-1 col-end-[-1] overflow-y-auto lg:col-start-2">
+      <div className="grid grid-cols-1 grid-flow-row gap-8 px-4 pt-4 pb-8 sm:grid-cols-2 md:grid-cols-4 md:py-10 md:px-6">
         {!isSuccess && (Array(8).fill('')
           .map((_, ind) => <ItemPlaceholder key={`placeholder-${ind}`} />)
         )}

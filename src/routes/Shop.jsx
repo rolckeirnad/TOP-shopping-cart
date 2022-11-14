@@ -54,18 +54,22 @@ function Shop() {
   const addToCart = useOutletContext();
   return (
     <>
-      <div className="w-full h-12 md:hidden">
+      <div className="w-full h-12 md:absolute md:top-8 md:w-fit lg:hidden">
         <Menu>
           <MenuHandler>
-            <Button className="bg-black w-full rounded-none">Menu</Button>
+            <Button className="bg-black w-full rounded-none">Category</Button>
           </MenuHandler>
-          <MenuList className="w-full capitalize text-lg">
+          <MenuList className="w-full capitalize text-lg md:w-3/5 md:text-4xl">
             <Link to="/shop/all">
-              <MenuItem>New</MenuItem>
+              <MenuItem className="md:flex md:items-center">
+                <FontAwesomeIcon icon={icon({ name: 'star', style: 'solid' })} className="hidden md:block md:mr-4" />
+                New
+              </MenuItem>
             </Link>
-            {categories && categories.map((category) => (
+            {categories && categories.map((category, i) => (
               <Link to={`/shop/${encodeURI(category)}`} key={`${category}-menu-entry`}>
-                <MenuItem>
+                <MenuItem className="md:flex md:items-center">
+                  <FontAwesomeIcon icon={customIcons[i] || faCircleExclamation} className="hidden md:block md:mr-4" />
                   {category}
                 </MenuItem>
               </Link>
@@ -74,7 +78,7 @@ function Shop() {
         </Menu>
       </div>
       <div className="grid grid-cols-5 h-full overflow-hidden">
-        <div className="hidden col-span-1 py-10 capitalize text-white bg-gray-800 text-2xl md:flex md:flex-col gap-6">
+        <div className="hidden col-span-1 py-10 capitalize text-white bg-gray-800 text-2xl lg:flex lg:flex-col gap-6">
           <NavLink to="/shop/all" className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)}>
             <FontAwesomeIcon icon={icon({ name: 'star', style: 'solid' })} />
             <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">All</h2>
