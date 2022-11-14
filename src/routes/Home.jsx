@@ -47,8 +47,8 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute -z-10 w-full lg:w-1/2 flex flex-col justify-start items-center overflow-hidden">
-          <img src="https://placekitten.com/g/800/600" alt="hero" className="w-full opacity-50 md:w-2/3 lg:w-full" />
+        <div className="absolute -z-10 h-full w-full lg:w-1/2 flex flex-col justify-start items-center overflow-hidden">
+          <img src="https://placekitten.com/g/800/600" alt="hero" className="w-full h-full object-cover opacity-50 md:w-2/3 lg:w-full" />
         </div>
       </div>
       <div className="mt-8 px-2 md:px-60">
@@ -71,15 +71,15 @@ function Home() {
       {products && (
       <div className="carouselSection md:px-56">
         <h2 className="text-xl text-center sm:text-3xl leading-4 ">Check our new items:</h2>
-        <div id="carouselContainer" className="overflow-x-auto w-full snap-x px-px">
-          <div id="carouselItems" className="container h-[65vh] px-3 mx-auto snap-mandatory flex flex-nowrap gap-2 md:gap-3 relative">
+        <div id="carouselContainer" className="overflow-x-auto overflow-y-hidden m-0 w-full snap-x px-px">
+          <div id="carouselItems" className="min-h-[340px] h-[65vh] px-3 mx-auto snap-mandatory flex flex-nowrap gap-2 md:gap-3 sm:-m-[10px] relative">
             {products.map((product) => <Item data={product} key={product.id} />)}
           </div>
         </div>
       </div>
       )}
 
-      <div className="h-[400px] flex flex-col items-center justify-center text-center md:px-56">
+      <div className="h-[400px] flex flex-col items-center justify-center text-center sm:px-24 md:px-56">
         <Card className="w-full">
           <CardHeader
             variant="gradient"

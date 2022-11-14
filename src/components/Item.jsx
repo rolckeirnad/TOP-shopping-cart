@@ -9,7 +9,7 @@ function Item({ data }) {
     id, title, price, description, image,
   } = data;
   return (
-    <Card className="relative basis-[calc(50%)] justify-around flex-grow flex-shrink-0 md:basis-[calc(33.33%-4px)] snap-center border" id={id}>
+    <Card className="relative basis-[calc(50%+5px)] justify-around flex-grow flex-shrink-0 sm:basis-[calc(33.33%)] md:basis-[calc(33.33%-4px)] snap-center border" id={id}>
       <CardHeader className="relative self-center mt-4 h-1/3 md:h-56">
         <img
           src={image}
