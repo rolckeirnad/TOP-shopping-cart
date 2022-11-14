@@ -55,7 +55,7 @@ function Home() {
       </div>
       <div className="mt-8 px-2 md:px-8 lg:px-60">
         <h2 className="text-xl text-center leading-4 sm:text-3xl">We make the best for you.</h2>
-        <p className="text-base text-center py-4 md:text-lg lg-text-2xl">
+        <p className="text-base text-center py-4 md:text-lg lg:text-2xl">
           Nap all day cat dog hate mouse eat string barf pillow no baths hate everything but
           kitty poochy. Sleep on keyboard toy mouse squeak roll over. Mesmerizing birds. Poop
           on grasses licks paws destroy couch intently sniff hand. The dog smells bad gnaw the
@@ -66,7 +66,7 @@ function Home() {
         </p>
         <div className="mb-10 flex justify-center items-center sm:flex-row">
           <Link to="about">
-            <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-black text-white font-semibold uppercase hover:bg-gray-700">About us</button>
+            <button type="button" className="m-1.5 py-2.5 px-5 rounded-md bg-black text-white font-semibold uppercase hover:bg-gray-700 lg:text-lg">About us</button>
           </Link>
         </div>
       </div>
