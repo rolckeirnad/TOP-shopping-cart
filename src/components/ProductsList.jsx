@@ -22,7 +22,7 @@ function ProductsList() {
   });
   return (
     <div className="col-start-1 col-end-[-1] overflow-y-auto lg:col-start-2">
-      <div className="grid grid-cols-1 grid-flow-row gap-8 px-4 pt-4 pb-8 sm:grid-cols-2 md:grid-cols-4 md:py-10 md:px-6">
+      <div className="grid grid-cols-1 grid-flow-row gap-8 px-4 pt-4 pb-8 sm:grid-cols-2 md:grid-cols-4 md:py-10 md:px-6 lg:grid-cols-5">
         {!isSuccess && (Array(8).fill('')
           .map((_, ind) => <ItemPlaceholder key={`placeholder-${ind}`} />)
         )}
