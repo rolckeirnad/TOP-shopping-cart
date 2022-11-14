@@ -7,8 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import {
+  Link,
   NavLink, Outlet, useOutletContext,
 } from 'react-router-dom';
+import {
+  Button,
+  Menu, MenuHandler, MenuItem, MenuList,
+} from '@material-tailwind/react';
 import { fetchCategories, fetchProducts } from '../fake-store';
 
 library.add(fas);
@@ -48,21 +53,42 @@ function Shop() {
 
   const addToCart = useOutletContext();
   return (
-    <div className="grid grid-cols-5 h-full overflow-hidden">
-      <div className="col-span-1 py-10 capitalize text-white bg-gray-800 text-2xl flex flex-col gap-6">
-        <NavLink to="/shop/all" className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)}>
-          <FontAwesomeIcon icon={icon({ name: 'star', style: 'solid' })} />
-          <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">All</h2>
-        </NavLink>
-        {categories && categories.map((category, i) => (
-          <NavLink to={`/shop/${encodeURI(category)}`} className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)} key={`${category}-sidebar-entry`}>
-            <FontAwesomeIcon icon={customIcons[i] || faCircleExclamation} />
-            <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">{category}</h2>
-          </NavLink>
-        ))}
+    <>
+      <div className="w-full h-12 md:hidden">
+        <Menu>
+          <MenuHandler>
+            <Button className="bg-black w-full rounded-none">Menu</Button>
+          </MenuHandler>
+          <MenuList className="w-full capitalize text-lg">
+            <Link to="/shop/all">
+              <MenuItem>New</MenuItem>
+            </Link>
+            {categories && categories.map((category) => (
+              <Link to={`/shop/${encodeURI(category)}`} key={`${category}-menu-entry`}>
+                <MenuItem>
+                  {category}
+                </MenuItem>
+              </Link>
+            ))}
+          </MenuList>
+        </Menu>
       </div>
-      <Outlet context={addToCart} />
-    </div>
+      <div className="grid grid-cols-5 h-full overflow-hidden">
+        <div className="hidden col-span-1 py-10 capitalize text-white bg-gray-800 text-2xl md:flex md:flex-col gap-6">
+          <NavLink to="/shop/all" className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)}>
+            <FontAwesomeIcon icon={icon({ name: 'star', style: 'solid' })} />
+            <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">All</h2>
+          </NavLink>
+          {categories && categories.map((category, i) => (
+            <NavLink to={`/shop/${encodeURI(category)}`} className={({ isActive }) => (isActive ? `${linkBaseStyle} ${linkActiveStyle}` : linkBaseStyle)} key={`${category}-sidebar-entry`}>
+              <FontAwesomeIcon icon={customIcons[i] || faCircleExclamation} />
+              <h2 className="flex-1 ml-5 ease-in-out duration-300 hover:scale-105">{category}</h2>
+            </NavLink>
+          ))}
+        </div>
+        <Outlet context={addToCart} />
+      </div>
+    </>
   );
 }
 
