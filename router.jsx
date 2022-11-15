@@ -11,6 +11,7 @@ import Home from './src/routes/Home';
 import Shop, { loader as categoriesLoader } from './src/routes/Shop';
 import ProductsList from './src/components/ProductsList';
 import ItemDescription from './src/components/ItemDescription';
+import About from './src/routes/About';
 
 const router = (queryClient) => (
   createHashRouter(
@@ -28,7 +29,7 @@ const router = (queryClient) => (
             <Route path=":categoryPath" element={<ProductsList />} />
             <Route path="product/:productId" element={<ItemDescription />} />
           </Route>
-          <Route path="about" element={<div>About</div>} />
+          <Route path="about" element={<About />} />
         </Route>
       </Route>,
     ),
