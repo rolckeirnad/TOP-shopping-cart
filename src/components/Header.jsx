@@ -69,7 +69,7 @@ function Header({ cart, deleteItem }) {
                   </span>
                 </button>
               </PopoverHandler>
-              <PopoverContent className="flex flex-col w-1/3 max-h-[80%]">
+              <PopoverContent className="flex flex-col w-10/12 max-h-[80%] sm:w-1/2 md:w-1/3">
                 <h2 className="text-lg -mt-2">Your Cart</h2>
                 <hr className="mb-2" />
                 <div className="flex flex-col gap-8 overflow-auto">

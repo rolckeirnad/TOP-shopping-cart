@@ -12,7 +12,7 @@ function CartItem({ item, deleteItem }) {
 
   return (
     <div className="flex card">
-      <img className="w-1/4" src={image} alt={title} />
+      <img className="w-1/4 object-contain" src={image} alt={title} />
       <div className="w-3/4 px-3 flex flex-col justify-between">
         <div className="flex flex-col">
           <h6 className="text-base font-bold">{title}</h6>

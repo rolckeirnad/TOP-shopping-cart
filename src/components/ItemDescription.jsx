@@ -48,7 +48,7 @@ function ItemDescription() {
       addToCart();
     };
     return (
-      <div className="col-start-1 col-end-[-1] p-6 overflow-auto sm:p-3 sm:pr-0 sm:flex md:gap-10 lg:col-start-2">
+      <div className="col-start-1 col-end-[-1] p-6 overflow-auto sm:p-3 sm:max-md:pr-0 sm:flex sm:gap-2 md:p-8 md:gap-10 lg:col-start-2">
         <div className="w-full flex justify-center pb-4 sm:w-1/3 md:items-start md:h-fit">
           <img src={product.image} alt={product.title} className="max-h-[50vh] sm:max-h-full sm:sticky top-16" />
         </div>
@@ -74,8 +74,8 @@ function ItemDescription() {
             $
             { product.price }
           </p>
-          <p className="text-xl max-h-[30vh] lg:overflow-auto md:text-2xl">{ product.description }</p>
-          <div className="flex justify-between items-center gap-5 lg:justify-around">
+          <p className="text-xl md:text-2xl lg:max-h-[30vh] lg:overflow-auto">{ product.description }</p>
+          <div className="flex justify-between items-center gap-5 md:justify-around">
             <div className="flex flex-col w-fit">
               <p className="text-lg text-center">Quantity:</p>
               <div className="text-xl">
