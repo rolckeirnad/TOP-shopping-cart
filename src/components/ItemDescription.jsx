@@ -48,13 +48,13 @@ function ItemDescription() {
       addToCart();
     };
     return (
-      <div className="col-start-2 col-end-[-1] flex gap-10 p-8 overflow-auto">
-        <div className="w-1/3">
-          <img src={product.image} alt={product.title} className="max-h-full sticky top-16" />
+      <div className="col-start-1 col-end-[-1] p-6 overflow-auto sm:p-3 sm:pr-0 sm:flex md:gap-10 lg:col-start-2">
+        <div className="w-full flex justify-center pb-4 sm:w-1/3 md:items-start md:h-fit">
+          <img src={product.image} alt={product.title} className="max-h-[50vh] sm:max-h-full sm:sticky top-16" />
         </div>
-        <div className="w-2/3 flex flex-col gap-5">
+        <div className="flex flex-col gap-5 sm:w-2/3 sm:overflow-auto sm:pr-2">
           <div className="flex flex-col gap-3">
-            <h2 className="text-3xl">{product.title}</h2>
+            <h2 className="text-3xl sm:max-md:text-2xl">{product.title}</h2>
             <div className="flex text-lg items-center">
               <div className="w-[5rem] text-white">
                 <div className="flex text-base bg-orange-500" style={{ width: `${product.rating.rate}rem` }}>
@@ -70,12 +70,12 @@ function ItemDescription() {
               </p>
             </div>
           </div>
-          <p className="text-4xl">
+          <p className="text-4xl sm:text-2xl">
             $
             { product.price }
           </p>
-          <p className="text-xl overflow-auto">{ product.description }</p>
-          <div className="flex gap-5">
+          <p className="text-xl max-h-[30vh] lg:overflow-auto md:text-2xl">{ product.description }</p>
+          <div className="flex justify-between items-center gap-5 lg:justify-around">
             <div className="flex flex-col w-fit">
               <p className="text-lg text-center">Quantity:</p>
               <div className="text-xl">
@@ -84,7 +84,7 @@ function ItemDescription() {
                 <button className="w-8" type="button" onClick={incrementQuantity}>+</button>
               </div>
             </div>
-            <Button type="button" onClick={handleClick} className="w-1/3 self-center mt-2 bg-black text-lg">Add to Basket</Button>
+            <Button type="button" onClick={handleClick} className="w-32 self-center mt-2 bg-black text-lg sm:w-1/3">Add to Basket</Button>
           </div>
           <div>
             <p>
