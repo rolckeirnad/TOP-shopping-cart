@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useLocation, useOutletContext, useParams } from 'react-router-dom';
+import {
+  useLocation, useNavigate, useOutletContext, useParams,
+} from 'react-router-dom';
 import { fetchById } from '../fake-store';
 
 const productQuery = (id) => ({
@@ -17,6 +19,7 @@ function ItemDescription() {
   const helperFn = useOutletContext();
   const [quantity, setQuantity] = useState(1);
   const item = state?.product;
+  const navigate = useNavigate();
 
   const incrementQuantity = () => setQuantity(quantity + 1);
   const decrementQuantity = () => setQuantity((prevQuantity) => {
@@ -48,8 +51,13 @@ function ItemDescription() {
       addToCart();
     };
     return (
-      <div className="col-start-1 col-end-[-1] p-6 overflow-auto sm:p-3 sm:max-md:pr-0 sm:flex sm:gap-2 md:p-8 md:gap-10 lg:col-start-2">
-        <div className="w-full flex justify-center pb-4 sm:w-1/3 md:items-start md:h-fit">
+      <div className="relative col-start-1 col-end-[-1] p-6 overflow-auto sm:py-3 sm:pl-3 sm:pr-0 sm:flex sm:gap-4 md:p-8 md:gap-10 lg:col-start-2">
+        <div className="fixed sm:absolute sm:top-0 sm:left-0 sm:my-4 sm:mx-4 md:m-6">
+          <button type="button" className="bg-gray-200 rounded-full h-fit w-6 z-10 scale-150 md:scale-[2]">
+            <FontAwesomeIcon icon={icon({ name: 'chevron-left', style: 'solid' })} onClick={() => navigate(-1)} className="w-4" />
+          </button>
+        </div>
+        <div className="w-full flex justify-center -z-10 sm:justify-end pb-4 sm:w-1/3 md:items-start md:h-fit md:ml-8">
           <img src={product.image} alt={product.title} className="max-h-[50vh] sm:max-h-full sm:sticky top-16" />
         </div>
         <div className="flex flex-col gap-5 sm:w-2/3 sm:overflow-auto sm:pr-2">
